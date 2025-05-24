@@ -40,6 +40,9 @@ async function check(){
     else if(cur=='Rain'){
          document.getElementById('gif').src='rain.gif';
      }
+    else if(cur=='Mist'){
+         document.getElementById('gif').src='mist.gif';
+     }
      const humidity = data.main.humidity;
     document.getElementById('temp').innerText=`Temperature🌡️: ${temp}`
      document.getElementById('humid').innerText=`Humidity: ${humidity}`
