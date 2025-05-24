@@ -1,6 +1,14 @@
 async function check(){
     try{
     let city=document.getElementById('city').value;
+    if(city=="" || city==" "){
+       document.getElementById('temp').innerText="Something went wrong or Invalid city name..."
+       document.getElementById('humid').innerText="";
+       document.getElementById('Condition').innerText="";
+       document.getElementById('gif').src='walk.gif';
+       document.getElementById('cityname').innerText="";
+       return;
+    }
     document.getElementById('cityname').innerText=city;
     const res= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},india&APPID=9d2d9e79d4e743398385c55e72e6ed31&units=metric`)
     const data=await res.json();
@@ -40,9 +48,6 @@ async function check(){
     else if(cur=='Rain'){
          document.getElementById('gif').src='rain.gif';
      }
-    else if(cur=='Mist'){
-         document.getElementById('gif').src='mist.gif';
-     }
      const humidity = data.main.humidity;
     document.getElementById('temp').innerText=`Temperature🌡️: ${temp}`
      document.getElementById('humid').innerText=`Humidity: ${humidity}`
@@ -50,6 +55,10 @@ async function check(){
     }
     catch(error){
        document.getElementById('temp').innerText="Something went wrong or Invalid city name..."
+       document.getElementById('humid').innerText="";
+       document.getElementById('Condition').innerText="";
+       document.getElementById('gif').src='walk.gif';
+       document.getElementById('cityname').innerText="";
     }
     
     
